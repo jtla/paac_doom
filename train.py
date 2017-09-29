@@ -5,7 +5,7 @@ import signal
 import os
 import copy
 
-import environment_creator
+import doom_environment_creator
 from paac import PAACLearner
 from policy_v_network import NaturePolicyVNetwork, NIPSPolicyVNetwork
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
@@ -50,7 +50,8 @@ def setup_kill_signal_handler(learner):
 
 
 def get_network_and_environment_creator(args, random_seed=3):
-    env_creator = environment_creator.EnvironmentCreator(args)
+    #env_creator = environment_creator.EnvironmentCreator(args)
+    env_creator = doom_environment_creator.DoomEnvironmentCreator(args)
     num_actions = env_creator.num_actions
     args.num_actions = num_actions
     args.random_seed = random_seed

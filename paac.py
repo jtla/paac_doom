@@ -70,6 +70,7 @@ class PAACLearner(ActorLearner):
 
         total_rewards = []
 
+        #import pdb;pdb.set_trace()
         # state, reward, episode_over, action
         variables = [(np.asarray([emulator.get_initial_state() for emulator in self.emulators], dtype=np.uint8)),
                      (np.zeros(self.emulator_counts, dtype=np.float32)),
