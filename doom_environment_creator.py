@@ -12,7 +12,8 @@ class DoomEnvironmentCreator(object):
         #ale_int = ALEInterface()
         #ale_int.loadROM(str.encode(filename))
         #self.num_actions = len(ale_int.getMinimalActionSet())
-        
+
         # TODO: do better
         self.num_actions = 3
+        #self.num_actions = 7
         self.create_environment = lambda i: DoomEmulator(i, args)

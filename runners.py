@@ -13,10 +13,11 @@ class Runners(object):
         self.workers = workers
         self.queues = [Queue() for _ in range(workers)]
         self.barrier = Queue()
-
         self.runners = [EmulatorRunner(i, emulators, vars, self.queues[i], self.barrier) for i, (emulators, vars) in
                         enumerate(zip(np.split(emulators, workers), zip(*[np.split(var, workers) for var in self.variables])))]
-        
+        #import pdb
+        #pdb.set_trace()
+
     def _get_shared(self, array):
         """
         Returns a RawArray backed numpy array that can be shared between processes.

@@ -8,7 +8,9 @@ def flatten(_input):
     dim = shape[1]*shape[2]*shape[3]
     return tf.reshape(_input, [-1,dim], name='_flattened')
 
-
+# nips
+#_, _, conv1 = conv2d('conv1', self.input, 16, 8, 4, 4)
+#_, _, conv2 = conv2d('conv2', conv1, 32, 4, 16, 2)
 def conv2d(name, _input, filters, size, channels, stride, padding = 'VALID', init = "torch"):
     w = conv_weight_variable([size,size,channels,filters],
                              name + '_weights', init = init)
@@ -18,6 +20,7 @@ def conv2d(name, _input, filters, size, channels, stride, padding = 'VALID', ini
                         padding=padding, name=name + '_convs')
     out = tf.nn.relu(tf.add(conv, b),
                      name='' + name + '_activations')
+    #import pdb;pdb.set_trace()
     return w, b, out
 
 
@@ -111,6 +114,7 @@ class Network(object):
             with tf.name_scope(self.name):
                 self.loss_scaling = 5.0
                 #self.input_ph = tf.placeholder(tf.uint8, [None, 84, 84, 4], name='input')
+                # https://stackoverflow.com/questions/44461197/why-use-none-for-the-batch-dimension-in-tensorflow
                 self.input_ph = tf.placeholder(tf.uint8, [None, 160, 120, 4], name='input')
                 self.selected_action_ph = tf.placeholder("float32", [None, self.num_actions], name="selected_action")
                 self.input = tf.scalar_mul(1.0/255.0, tf.cast(self.input_ph, tf.float32))

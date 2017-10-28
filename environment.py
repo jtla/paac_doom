@@ -61,6 +61,7 @@ class ObservationPool(object):
         self.observation_pool = observation_pool
         self.pool_size = observation_pool.shape[-1]
         self.permutation = [self.__shift(list(range(self.pool_size)), i) for i in range(self.pool_size)]
+        #import pdb;pdb.set_trace()
         self.current_observation_index = 0
 
     def new_observation(self, observation):
@@ -73,4 +74,3 @@ class ObservationPool(object):
     def __shift(self, seq, n):
         n = n % len(seq)
         return seq[n:]+seq[:n]
-

@@ -76,6 +76,7 @@ class PAACLearner(ActorLearner):
                      (np.zeros(self.emulator_counts, dtype=np.float32)),
                      (np.asarray([False] * self.emulator_counts, dtype=np.float32)),
                      (np.zeros((self.emulator_counts, self.num_actions), dtype=np.float32))]
+        #import pdb;pdb.set_trace()
 
         self.runners = Runners(EmulatorRunner, self.emulators, self.workers, variables)
         self.runners.start()
