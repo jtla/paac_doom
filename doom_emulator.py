@@ -242,7 +242,7 @@ class DoomEmulator(BaseEnvironment):
             # print("Debug_4 {} {}".format(self.debug_counter4, self.doom.is_episode_finished()))
             # self.debug_counter4 += 1
             # print("Debug_4 {} {}".format(self.debug_counter4, self.doom.is_episode_finished()))
-            print("debug action 1")
+            #print("debug action 1")
             #print(a)
             reward += self.doom.make_action(self.legal_actions[a])
             #reward += (self.doom.get_state().game_variables[0] + self.doom.make_action(self.legal_actions[a]))
